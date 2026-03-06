@@ -95,3 +95,14 @@ buttons[0].addEventListener("click", () => {
 });
 
 
+const searchInput = document.querySelector("input");
+
+searchInput.addEventListener("input", (e) => {
+    const value = e.target.value.toLowerCase();
+
+    const filtered = issues.filter((issue) =>
+        issue.title.toLowerCase().includes(value)
+    );
+
+    renderIssues(filtered);
+});
