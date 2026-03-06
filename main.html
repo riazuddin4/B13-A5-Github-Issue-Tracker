@@ -40,15 +40,15 @@
 
         <div class="bg-gray-200 p-4 rounded-lg flex gap-2 w-full ">
 
-            <button class="btn bg-purple-600 text-white border-none filter-btn">
+            <button id="all-filter-btn" onclick="toggleStyle('all-filter-btn')" class="btn bg-blue-700 text-white border-none filter-btn">
                 All
             </button>
 
-            <button class="btn bg-white text-gray-500 border filter-btn">
+            <button id="open-filter-btn" onclick="toggleStyle('open-filter-btn')" class="btn bg-gray-300 text-gray-500 border filter-btn">
                 Open
             </button>
 
-            <button class="btn bg-white text-gray-500 border filter-btn">
+            <button id="closed-filter-btn" onclick="toggleStyle('closed-filter-btn')" class="btn bg-gray-300 text-gray-500 border filter-btn">
                 Closed
             </button>
 
@@ -65,7 +65,7 @@
             <!-- Header -->
             <div class="flex justify-between items-center mb-6 bg-gray-200 p-4 rounded-lg gap-2 w-full">
                 <div class="">
-                    <h2 class="text-xl font-bold">50 Issues</h2>
+                    <h2 id="issue-count" class="text-xl font-bold">0 Issues</h2>
                     <p class="text-sm text-gray-500">
                         Track and manage your project issues
                     </p>
@@ -88,18 +88,18 @@
             <div id="card-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 
                 <!-- Issue Card -->
-                <div class="card bg-white border-t-4 border-red-500 shadow-md p-4">
+                <!-- <div class="card bg-white border-t-4 border-red-500 shadow-md p-4"> -->
 
                     <!-- Top -->
-                    <div class="flex justify-between items-center mb-2">
+                    <!-- <div class="flex justify-between items-center mb-2"> -->
 
                         <!-- Status Icon -->
-                        <div class="w-5 h-5 flex items-center justify-center rounded-full border border-green-500">
+                        <!-- <div class="w-5 h-5 flex items-center justify-center rounded-full border border-green-500">
                             <div class="w-2 h-2 bg-green-500 rounded-full"></div>
-                        </div>
+                        </div> -->
 
                         <!-- Priority -->
-                        <span class="text-xs px-3 py-1 rounded-full bg-red-100 text-red-500 font-semibold">
+                        <!-- <span class="text-xs px-3 py-1 rounded-full bg-red-100 text-red-500 font-semibold">
                             HIGH
                         </span>
 
@@ -111,27 +111,68 @@
 
                     <p class="text-xs text-gray-500 mt-1">
                         The navigation menu doesn't collapse properly on mobile devices...
-                    </p>
+                    </p> -->
 
                     <!-- labels -->
-                    <div class="flex gap-2 mt-3">
+                    <!-- <div class="flex gap-2 mt-3">
                         <span class="badge badge-outline badge-error">BUG</span>
                         <span class="badge badge-outline badge-warning">HELP WANTED</span>
-                    </div>
+                    </div> -->
 
                     <!-- footer -->
-                    <div class="text-xs text-gray-400 mt-4">
+                    <!-- <div class="text-xs text-gray-400 mt-4">
                         #1 by john_doe <br>
                         1/15/2024
-                    </div>
+                    </div> -->
 
-                </div>
+                <!-- </div> -->
 
             </div>
 
         </section>
 
 
+
+         <!-- Product details modal -->
+        <dialog id="tree-details-modal" class="modal">
+            <div class="modal-box">
+
+                <!-- Modal Header with Close Button -->
+                <div class="flex justify-between items-start mb-4">
+                    <h3 class="font-bold text-2xl text-green-700" id="modalTitle">Tree Details</h3>
+                    <button class="btn btn-sm btn-circle btn-ghost"
+                        onclick="document.getElementById('tree-details-modal').close()">✕</button>
+                </div>
+
+                <!-- Modal Content -->
+                <div class=" gap-6">
+                    <!-- Plant Image -->
+                    <img id="modalImage" src="" alt="plant" class="w-full !h-[250px] object-cover rounded-lg mb-12">
+
+                    <!-- Plant Details -->
+                    <div class="">
+                        <p class="text-sm text-gray-500 mb-2">
+                            <span class="font-bold">Category:</span>
+                            <span id="modalCategory" class="badge badge-primary"></span>
+                        </p>
+                        <p class="text-sm text-gray-600 mb-4">
+                            <span id="modalDescription"></span>
+                        </p>
+                        <div class="flex items-baseline gap-2 mb-6">
+                            <span class="text-3xl font-bold text-green-600">$<span id="modalPrice">0</span></span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="modal-action">
+                    <form method="dialog">
+                        <!-- if there is a button in form, it will close the modal -->
+                        <button class="btn">Close</button>
+                    </form>
+                </div>
+            </div>
+        </dialog>
 
 
 

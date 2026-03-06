@@ -1,5 +1,6 @@
 const cardContainer = document.getElementById("card-container");
 const buttons = document.querySelectorAll(".filter-btn");
+const issueCount = document.getElementById("issue-count");
 
 let issues = [];
 
@@ -16,6 +17,7 @@ loadIssues();
 
 function renderIssues(issueList) {
     cardContainer.innerHTML = "";
+    issueCount.innerText = `${issueList.length} Issues`;
 
     issueList.forEach((issue) => {
 
@@ -80,6 +82,8 @@ function renderIssues(issueList) {
 // const buttons = document.querySelectorAll("button");
 
 
+
+
 buttons[1].addEventListener("click", () => {
     const openIssues = issues.filter((issue) => issue.status === "open");
     renderIssues(openIssues);
@@ -106,3 +110,34 @@ searchInput.addEventListener("input", (e) => {
 
     renderIssues(filtered);
 });
+
+
+
+
+
+
+function toggleStyle(id) {
+    const allFilterBtn = document.getElementById('all-filter-btn');
+    const openFilterBtn = document.getElementById('open-filter-btn');
+    const closedFilterBtn = document.getElementById('closed-filter-btn');
+
+    const buttons = [allFilterBtn, openFilterBtn, closedFilterBtn];
+
+    buttons.forEach(btn => {
+        btn.classList.remove('bg-blue-700', 'text-white');
+        btn.classList.add('bg-gray-300', 'text-black');
+    });
+
+    const selected = document.getElementById(id);
+    selected.classList.remove('bg-gray-300', 'text-black');
+    selected.classList.add('bg-blue-700', 'text-white');
+
+    // Filter issues
+    if (id === 'all-filter-btn') {
+        renderIssues(issues);
+    } else if (id === 'open-filter-btn') {
+        renderIssues(issues.filter(issue => issue.status === 'open'));
+    } else if (id === 'closed-filter-btn') {
+        renderIssues(issues.filter(issue => issue.status === 'closed'));
+    }
+}
