@@ -79,3 +79,19 @@ function renderIssues(issueList) {
 
 // const buttons = document.querySelectorAll("button");
 
+
+buttons[1].addEventListener("click", () => {
+    const openIssues = issues.filter((issue) => issue.status === "open");
+    renderIssues(openIssues);
+});
+
+buttons[2].addEventListener("click", () => {
+    const closedIssues = issues.filter((issue) => issue.status === "closed");
+    renderIssues(closedIssues);
+});
+
+buttons[0].addEventListener("click", () => {
+    renderIssues(issues);
+});
+
+
