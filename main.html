@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- font  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header class="navbar bg-base-100 shadow-md px-6 border-b-4 border-blue-100">
+
+        <!-- Left: Logo + Title -->
+        <div class="flex-1 flex items-center gap-2">
+            <img src="./assets/github-logo.png" class="w-6">
+            <span class="font-semibold text-lg">GitHub Issues Tracker</span>
+        </div>
+
+        <!-- Right: Search + Button -->
+        <div class="flex items-center gap-3">
+
+            <input type="text" placeholder="Search issues..." class="input input-bordered input-sm w-56" />
+
+            <button class="btn btn-primary btn-sm">
+                + New Issue
+            </button>
+
+        </div>
+
+    </header>
+    <main>
+
+        <div class="bg-gray-200 p-4 rounded-lg flex gap-2 w-full ">
+
+            <button class="btn bg-purple-600 text-white border-none filter-btn">
+                All
+            </button>
+
+            <button class="btn bg-white text-gray-500 border filter-btn">
+                Open
+            </button>
+
+            <button class="btn bg-white text-gray-500 border filter-btn">
+                Closed
+            </button>
+
+        </div>
+
+
+
+
+
+
+
+        <section class="p-6">
+
+            <!-- Header -->
+            <div class="flex justify-between items-center mb-6 bg-gray-200 p-4 rounded-lg gap-2 w-full">
+                <div class="">
+                    <h2 class="text-xl font-bold">50 Issues</h2>
+                    <p class="text-sm text-gray-500">
+                        Track and manage your project issues
+                    </p>
+                </div>
+
+                <div class="flex gap-4 text-sm">
+                    <p class="flex items-center gap-2">
+                        <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                        Open
+                    </p>
+
+                    <p class="flex items-center gap-2">
+                        <span class="w-2 h-2 bg-purple-500 rounded-full"></span>
+                        Closed
+                    </p>
+                </div>
+            </div>
+
+            <!-- Issues Grid -->
+            <div id="card-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                
+                <!-- Issue Card -->
+                <div class="card bg-white border-t-4 border-red-500 shadow-md p-4">
+
+                    <!-- Top -->
+                    <div class="flex justify-between items-center mb-2">
+
+                        <!-- Status Icon -->
+                        <div class="w-5 h-5 flex items-center justify-center rounded-full border border-green-500">
+                            <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                        </div>
+
+                        <!-- Priority -->
+                        <span class="text-xs px-3 py-1 rounded-full bg-red-100 text-red-500 font-semibold">
+                            HIGH
+                        </span>
+
+                    </div>
+
+                    <h3 class="font-semibold text-sm">
+                        Fix Navigation Menu On Mobile Devices
+                    </h3>
+
+                    <p class="text-xs text-gray-500 mt-1">
+                        The navigation menu doesn't collapse properly on mobile devices...
+                    </p>
+
+                    <!-- labels -->
+                    <div class="flex gap-2 mt-3">
+                        <span class="badge badge-outline badge-error">BUG</span>
+                        <span class="badge badge-outline badge-warning">HELP WANTED</span>
+                    </div>
+
+                    <!-- footer -->
+                    <div class="text-xs text-gray-400 mt-4">
+                        #1 by john_doe <br>
+                        1/15/2024
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+
+
+    </main>
+
+
+    <script src="./script/main.js"></script>
+    <!-- <script src="./script/main1.js"></script> -->
+</body>
+
+</html>
