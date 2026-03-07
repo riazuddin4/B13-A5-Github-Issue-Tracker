@@ -1,6 +1,7 @@
 console.log('Login functionality commign');
 
-document.getElementById("login-btn").addEventListener("click", function(){
+document.getElementById("login-btn").addEventListener("click", function(e){
+    e.preventDefault();
     //1 get the username input
     const usernameInput = document.getElementById("input-username");
     const userName = usernameInput.value;
@@ -12,8 +13,9 @@ document.getElementById("login-btn").addEventListener("click", function(){
     //3 match pin & username
     if(userName == "admin" && pass == "admin123"){
         alert("login Success");
-        // window.location.replace("/main.html");
         window.location.assign("/main.html");
+        // window.location.("main.html");
+        // window.location.href = "/main.html";
     }else{
         alert("login Failes");
         return;
