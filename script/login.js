@@ -13,7 +13,7 @@ document.getElementById("login-btn").addEventListener("click", function(e){
     //3 match pin & username
     if(userName == "admin" && pass == "admin123"){
         alert("login Success");
-        window.location.assign("/main.html");
+        window.location.assign("main.html");
         // window.location.("main.html");
         // window.location.href = "/main.html";
     }else{
