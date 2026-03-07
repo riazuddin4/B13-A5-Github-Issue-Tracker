@@ -16,12 +16,12 @@ const modalassignees = document.getElementById("assignee");
 let issues = [];
 
 function showLoading() {
-  loadingSpinner.classList.remove("hidden");
-  cardContainer.innerHTML = "";
+    loadingSpinner.classList.remove("hidden");
+    cardContainer.innerHTML = "";
 };
 
 function hideLoading() {
-  loadingSpinner.classList.add("hidden");
+    loadingSpinner.classList.add("hidden");
 };
 
 async function loadIssues() {
@@ -99,13 +99,14 @@ loadIssues();
 //     `;
 
 //         cardContainer.innerHTML += card;
-        
+
 //     });
 
-    
+
 // }
 
 // const buttons = document.querySelectorAll("button");
+
 
 
 function renderIssues(issueList) {
@@ -122,6 +123,7 @@ function renderIssues(issueList) {
 
         const statusColor =
             issue.status === "open" ? "border-green-500" : "border-purple-500";
+            
 
         const labels = issue.labels?.map(
             (label) => `<span class="badge badge-outline badge-warning">${label}</span>`
@@ -133,7 +135,14 @@ function renderIssues(issueList) {
         card.innerHTML = `
             <div class="flex justify-between items-center mb-2">
                 <div class="w-5 h-5 flex items-center justify-center rounded-full border ${statusColor}">
-                  <div class="w-2 h-2 ${issue.status === "open" ? "bg-green-500" : "bg-purple-500"} rounded-full"></div>
+                  
+                  
+                        <div>       
+                             ${issue.status === "open"
+                                ? "<img src='./assets/Open-Status.png' alt='open'>"
+                            : "<img src='./assets/Closed- Status .png' alt='closed'>"}
+                        </div>
+
                 </div>
                 <span class="text-xs px-3 py-1 rounded-full bg-red-100 text-red-500 font-semibold">${issue.priority}</span>
             </div>
@@ -159,7 +168,9 @@ function renderIssues(issueList) {
         // Append card to container
         cardContainer.appendChild(card);
     });
-}
+};
+
+
 
 
 buttons[1].addEventListener("click", () => {
