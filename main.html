@@ -38,7 +38,7 @@
     </header>
     <main>
 
-        <div class="bg-gray-200 p-4 rounded-lg flex gap-2 w-full ">
+        <div class="bg-gray-200 p-4 rounded-lg flex gap-2 w-full sm:flex flex-wrap space-y-8 ">
 
             <button id="all-filter-btn" onclick="toggleStyle('all-filter-btn')"
                 class="btn bg-blue-700 text-white border-none filter-btn">
@@ -132,24 +132,29 @@
 
             </div>
 
+            <div id="loadingSpinner" class="h-[60vh] flex hidden justify-center items-center">
+                    <span class="loading loading-dots loading-xl"></span>
+                </div>
+
         </section>
 
 
 
         <!-- Issue Details Modal -->
-        <dialog id="issue-details-modal" class="modal">
-            <div class="modal-box">
+        <!-- <dialog id="issue-details-modal" class="modal">
+            <div class="modal-box"> -->
 
-                <!-- Modal Header -->
-                <div class="flex justify-between items-start mb-4">
+        <!-- Modal Header -->
+        <!-- <div class="flex justify-between items-start mb-4">
                     <h3 class="font-bold text-2xl" id="modalTitle">Issue Details</h3>
                     <button class="btn btn-sm btn-circle btn-ghost" onclick="issueDetailsModal.close()">✕</button>
-                </div>
+                </div> -->
 
-                <!-- Modal Content -->
-                <div class="mb-4">
-                    <p class="text-sm text-gray-500 mb-2">
-                        <span class="font-bold">Status:</span> <span id="modalStatus"></span>
+        <!-- Modal Content -->
+        <!-- <div class="mb-4">
+                    <p class="text-sm text-gray-500 mb-2 ">
+                        <span class="font-bold ">Status:</span> <span class="bg-success px-1 rounded-full"
+                            id="modalStatus"></span>
                     </p>
                     <p class="text-sm text-gray-500 mb-2">
                         <span class="font-bold">Priority:</span> <span id="modalPriority"></span>
@@ -167,7 +172,96 @@
                     </form>
                 </div>
             </div>
+        </dialog> -->
+
+
+
+
+        <dialog id="issue-details-modal" class="modal">
+
+            <!-- Overlay -->
+            <!-- <div class="modal-box"> -->
+                <!-- <div class="fixed inset-0 bg-black/40 flex items-center justify-center p-4"> -->
+
+                <!-- Modal Card -->
+                <div class="bg-white w-full max-w-2xl rounded-xl shadow-xl">
+
+                    <!-- Header -->
+                    <div class="flex items-start justify-between p-6 ">
+                        <h2 class="text-2xl font-bold text-gray-800" id="modalTitle">Issue Details
+                        </h2>
+                        <!-- <button class="text-gray-400 hover:text-gray-600 text-xl leading-none">
+                            ✕
+                        </button> -->
+                        <button class="btn btn-sm btn-circle btn-ghost" onclick="issueDetailsModal.close()">✕</button>
+                    </div>
+
+                    <!-- Meta Row -->
+                    <div class="px-6 pt-4">
+                        <div class="flex flex-wrap items-center gap-3 text-sm text-gray-500">
+                            <span class="bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full font-medium "
+                                id="modalStatus">
+                                <!-- Opened -->
+                            </span>
+                            <span>• Opened by Fahim Ahmed</span>
+                            <span id="modalFooter">• 22/02/2026</span>
+                        </div>
+                    </div>
+
+                    <!-- Labels -->
+                    <div class="px-6 pt-4 flex gap-2">
+                        <!-- <span class="font-bold">Labels:</span> <span id="modalLabels"></span> -->
+                        <span class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-xs font-semibold"
+                            id="modalLabels">
+
+                        </span>
+                        <!-- <span class="bg-amber-100 text-amber-700 px-3 py-1 rounded-full text-xs font-semibold" > -->
+
+                        <!-- </span> -->
+                    </div>
+
+                    <!-- Description -->
+                    <div class="px-6 pt-4">
+                        <p class="text-gray-600 leading-relaxed " id="modalDescription">
+                            <!-- The navigation menu doesn't collapse properly on mobile devices.
+                            Need to fix the responsive behavior. -->
+                        </p>
+                    </div>
+
+                    <!-- Assignee + Priority -->
+                    <div class="px-6 py-6 mt-4 bg-gray-50 grid grid-cols-2 gap-6">
+                        <div>
+                            <p class="text-sm text-gray-500 mb-1">Assignee:</p>
+                            <p class="font-semibold text-gray-800" id="assignee">Fahim Ahmed</p>
+                        </div>
+
+                        <div>
+                            <p class="text-sm text-gray-500 mb-1">Priority:</p>
+                            <span class="bg-red-500 text-white px-4 py-1 rounded-full text-xs font-bold"
+                                id="modalPriority">
+                                <!-- HIGH -->
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Footer -->
+                    <!-- <div class="flex justify-end p-6 border-t">
+                        <button
+                            class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-lg font-medium shadow">
+                            Close
+                        </button>
+                    </div> -->
+                    <div class="modal-action flex justify-end p-6 ">
+                        <form method="dialog">
+                            <button class="btn btn-primary">Close</button>
+                        </form>
+                    </div>
+
+                </div>
+            <!-- </div> -->
+
         </dialog>
+
 
 
 

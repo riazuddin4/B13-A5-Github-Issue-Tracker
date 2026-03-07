@@ -1,6 +1,7 @@
 const cardContainer = document.getElementById("card-container");
 const buttons = document.querySelectorAll(".filter-btn");
 const issueCount = document.getElementById("issue-count");
+const loadingSpinner = document.getElementById("loadingSpinner");
 
 
 const issueDetailsModal = document.getElementById("issue-details-modal");
@@ -10,16 +11,29 @@ const modalPriority = document.getElementById("modalPriority");
 const modalLabels = document.getElementById("modalLabels");
 const modalDescription = document.getElementById("modalDescription");
 const modalFooter = document.getElementById("modalFooter");
+const modalassignees = document.getElementById("assignee");
 
 let issues = [];
 
+function showLoading() {
+  loadingSpinner.classList.remove("hidden");
+  cardContainer.innerHTML = "";
+};
+
+function hideLoading() {
+  loadingSpinner.classList.add("hidden");
+};
+
 async function loadIssues() {
+
+    showLoading();
     const res = await fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues");
     const data = await res.json();
 
     issues = data.data;
 
     renderIssues(issues);
+    hideLoading();
 }
 
 loadIssues();
@@ -101,7 +115,7 @@ function renderIssues(issueList) {
     issueList.forEach((issue) => {
         const priorityColor =
             issue.priority === "high"
-                ? "border-red-500"
+                ? "border-green-500"
                 : issue.priority === "medium"
                     ? "border-yellow-500"
                     : "border-purple-500";
@@ -137,6 +151,8 @@ function renderIssues(issueList) {
             modalLabels.innerHTML = labels;
             modalDescription.textContent = issue.description;
             modalFooter.textContent = `#${issue.id} by ${issue.author} on ${issue.createdAt}`;
+            // modalassignees.textContent = issue.assignee;
+            modalassignees.textContent = issue.assignee || "No Assignee";
             issueDetailsModal.showModal();
         });
 
