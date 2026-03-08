@@ -109,47 +109,118 @@ loadIssues();
 
 
 
+// function renderIssues(issueList) {
+//     cardContainer.innerHTML = "";
+//     issueCount.innerText = `${issueList.length} Issues`;
+
+//     issueList.forEach((issue) => {
+//         const priorityColor =
+//             issue.priority === "high"
+//                 ? "border-green-500"
+//                 : issue.priority === "medium"
+//                     ? "border-green-500"
+//                     : "border-purple-500";
+
+//         // const statusColor =
+//         //     issue.status === "open" ? "border-green-500" : "border-purple-500";
+
+//         let borderColor;
+//         if (issue.status && issue.status.toLowerCase() === "open") {
+//             borderColor = "border-t-4 border-green-500";
+//         } else {
+//             borderColor = "border-t-4 border-purple-500";
+//         }
+
+
+//         const labels = issue.labels?.map(
+//             (label) => `<span class="badge badge-outline badge-warning">${label}</span>`
+//         ).join("") || "";
+
+//         // Create card as a DOM element
+//         const card = document.createElement("div");
+//         card.className = `card bg-white border-t-4 ${priorityColor} shadow-md p-4 cursor-pointer`;
+//         card.innerHTML = `
+//             <div class="flex justify-between items-center mb-2">
+//                 <div class="w-5 h-5 flex items-center justify-center rounded-full border ">
+                  
+                  
+//                         <div>       
+//                              ${issue.status === "open"
+//                 ? "<img src='./assets/Open-Status.png' alt='open'>"
+//                 : "<img src='./assets/Closed- Status .png' alt='closed'>"}
+//                         </div>
+
+//                 </div>
+//                 <span class="text-xs px-3 py-1 rounded-full bg-red-100 text-red-500 font-semibold">${issue.priority}</span>
+//             </div>
+//             <h3 class="font-semibold text-sm">${issue.title}</h3>
+//             <p class="text-xs text-gray-500 mt-1">${issue.description}</p>
+//             <div class="flex gap-2 mt-3">${labels}</div>
+//             <div class="text-xs text-gray-400 mt-4">#${issue.id} by ${issue.author} <br>${issue.createdAt}</div>
+//         `;
+
+//         // Add click event to open modal
+//         card.addEventListener("click", () => {
+//             modalTitle.textContent = issue.title;
+//             modalStatus.textContent = issue.status;
+//             modalPriority.textContent = issue.priority;
+//             modalLabels.innerHTML = labels;
+//             modalDescription.textContent = issue.description;
+//             modalFooter.textContent = `#${issue.id} by ${issue.author} on ${issue.createdAt}`;
+//             // modalassignees.textContent = issue.assignee;
+//             modalassignees.textContent = issue.assignee || "No Assignee";
+//             issueDetailsModal.showModal();
+//         });
+
+//         // Append card to container
+//         cardContainer.appendChild(card);
+//     });
+// };
+
+
 function renderIssues(issueList) {
     cardContainer.innerHTML = "";
     issueCount.innerText = `${issueList.length} Issues`;
 
     issueList.forEach((issue) => {
-        const priorityColor =
-            issue.priority === "high"
-                ? "border-green-500"
-                : issue.priority === "medium"
-                    ? "border-yellow-500"
-                    : "border-purple-500";
+        // const priorityColor =
+        //     issue.priority === "high"
+        //         ? "border-green-500"
+        //         : issue.priority === "medium"
+        //             ? "border-yellow-500"
+        //             : "border-purple-500";
 
-        const statusColor =
-            issue.status === "open" ? "border-green-500" : "border-purple-500";
-            
+        const borderColor =
+            issue.status?.toLowerCase() === "open"
+                ? "border-t-4 border-green-500"
+                : "border-t-4 border-purple-500";
 
         const labels = issue.labels?.map(
             (label) => `<span class="badge badge-outline badge-warning">${label}</span>`
         ).join("") || "";
 
-        // Create card as a DOM element
         const card = document.createElement("div");
-        card.className = `card bg-white border-t-4 ${priorityColor} shadow-md p-4 cursor-pointer`;
+        card.className = `card bg-white ${borderColor}  shadow-md p-4 cursor-pointer`;
+
         card.innerHTML = `
             <div class="flex justify-between items-center mb-2">
-                <div class="w-5 h-5 flex items-center justify-center rounded-full border ${statusColor}">
-                  
-                  
-                        <div>       
-                             ${issue.status === "open"
-                                ? "<img src='./assets/Open-Status.png' alt='open'>"
-                            : "<img src='./assets/Closed- Status .png' alt='closed'>"}
-                        </div>
-
+                <div class="w-5 h-5 flex items-center justify-center rounded-full border">
+                    ${
+                        issue.status?.toLowerCase() === "open"
+                            ? "<img src='./assets/Open-Status.png' alt='open'>"
+                            : "<img src='./assets/Closed- Status .png' alt='closed'>"
+                    }
                 </div>
-                <span class="text-xs px-3 py-1 rounded-full bg-red-100 text-red-500 font-semibold">${issue.priority}</span>
+                <span class="text-xs px-3 py-1 rounded-full bg-red-100 text-red-500 font-semibold">
+                    ${issue.priority}
+                </span>
             </div>
             <h3 class="font-semibold text-sm">${issue.title}</h3>
             <p class="text-xs text-gray-500 mt-1">${issue.description}</p>
             <div class="flex gap-2 mt-3">${labels}</div>
-            <div class="text-xs text-gray-400 mt-4">#${issue.id} by ${issue.author} <br>${issue.createdAt}</div>
+            <div class="text-xs text-gray-400 mt-4">
+                #${issue.id} by ${issue.author} <br>${issue.createdAt}
+            </div>
         `;
 
         // Add click event to open modal
@@ -165,11 +236,11 @@ function renderIssues(issueList) {
             issueDetailsModal.showModal();
         });
 
-        // Append card to container
+//         // Append card to container
+//         cardContainer.appendChild(card);
         cardContainer.appendChild(card);
     });
 };
-
 
 
 
